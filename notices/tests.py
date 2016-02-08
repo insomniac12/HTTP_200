@@ -48,3 +48,11 @@ class BookmarkedNoticeTest(TestCase):
         notice=Notice.objects.get(faculty=faculty_detail)
         bookmarked_notice=BookmarkedNotice.objects.get(user=user,notice=notice)
         self.assertEqual(bookmarked_notice.pinned,True)
+
+#forms test
+class form_test(TestCase):
+    
+    def notice_create_form(self):
+        form_data={'branches':'IT','years':3,'title':'extra-class','description':'extra-class for compiler design will be from 1:30 to 2:30 tomorrow','file_attached':'','subject':'compiler design class','category':'Academics'}
+        form=NoticeCreateForm(data=form_data)
+        self.assertTrue(form.is_valid())
